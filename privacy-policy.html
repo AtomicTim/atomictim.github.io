@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ClearGov – Privacy Policy</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+      color: #1e293b;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+    h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; color: #1d4ed8; }
+    h2 { font-size: 18px; font-weight: 700; margin-top: 36px; margin-bottom: 8px; color: #1e293b; }
+    p  { margin: 0 0 14px; color: #374151; }
+    ul { margin: 0 0 14px; padding-left: 24px; color: #374151; }
+    li { margin-bottom: 6px; }
+    .meta { font-size: 13px; color: #6b7280; margin-bottom: 32px; }
+    a  { color: #2563eb; }
+    .highlight {
+      background: #eff6ff;
+      border-left: 4px solid #2563eb;
+      padding: 14px 18px;
+      border-radius: 4px;
+      margin: 24px 0;
+      font-size: 15px;
+    }
+    hr { border: none; border-top: 1px solid #e2e8f0; margin: 32px 0; }
+  </style>
+</head>
+<body>
+
+  <h1>🏛️ ClearGov – Privacy Policy</h1>
+  <p class="meta">Last updated: March 2026</p>
+
+  <div class="highlight">
+    <strong>The short version:</strong> ClearGov reads form field labels and page context to generate explanations. It never reads what you type into fields. Your API key stays on your device. No data is collected, sold, or shared by ClearGov itself.
+  </div>
+
+  <h2>What ClearGov Does</h2>
+  <p>ClearGov is a Chrome browser extension that explains government form fields in plain English. When you click on or interact with a form field on a .gov or .edu website, ClearGov reads contextual information about that field and sends it to the Anthropic AI API to generate a plain-English explanation.</p>
+
+  <h2>What Data ClearGov Collects and Sends</h2>
+  <p>When you interact with a form field, ClearGov may send the following to the Anthropic API:</p>
+  <ul>
+    <li>The field's label or question text (e.g. "Date of Birth", "Adjusted Gross Income")</li>
+    <li>Helper text or instructions visible near the field on the page</li>
+    <li>The page title and URL of the government website you are visiting</li>
+    <li>For dropdown menus: the list of available options</li>
+    <li>For agreement/consent checkboxes: the visible legal text on the page</li>
+  </ul>
+
+  <p><strong>ClearGov does NOT collect or send:</strong></p>
+  <ul>
+    <li>Any values you type into form fields (your name, SSN, income amounts, dates of birth, etc.)</li>
+    <li>Passwords or authentication credentials</li>
+    <li>Any information from pages outside of .gov and .edu websites</li>
+    <li>Browsing history</li>
+    <li>Any personally identifiable information</li>
+  </ul>
+
+  <h2>Your Anthropic API Key</h2>
+  <p>ClearGov requires you to provide your own Anthropic API key to function. This key is stored locally on your device using Chrome's built-in storage and is never transmitted to ClearGov or any server other than Anthropic's API directly. You can remove your key at any time using the "Change API key" option in the extension.</p>
+
+  <h2>Third-Party Services: Anthropic</h2>
+  <p>ClearGov uses the <a href="https://www.anthropic.com" target="_blank">Anthropic API</a> to generate explanations. Field context data described above is sent directly from your browser to Anthropic's servers. ClearGov does not have access to this data and does not store or log any API requests or responses.</p>
+  <p>Anthropic's data handling practices are governed by their own privacy policy, which you can review at <a href="https://www.anthropic.com/privacy" target="_blank">anthropic.com/privacy</a>.</p>
+
+  <h2>Data Storage</h2>
+  <p>ClearGov stores only two things locally on your device using Chrome's storage API:</p>
+  <ul>
+    <li>Your Anthropic API key</li>
+    <li>The most recently detected form field context (used to restore state when the sidebar opens)</li>
+  </ul>
+  <p>Neither of these is transmitted to ClearGov or any server other than Anthropic's API.</p>
+
+  <h2>Permissions</h2>
+  <p>ClearGov requests the following Chrome permissions:</p>
+  <ul>
+    <li><strong>activeTab / scripting:</strong> To read form field labels and page context on the current tab</li>
+    <li><strong>sidePanel:</strong> To display the explanation panel alongside the page</li>
+    <li><strong>storage:</strong> To save your API key and last field state locally</li>
+    <li><strong>tabs:</strong> To detect when you navigate to a .gov or .edu site and enable the panel</li>
+  </ul>
+
+  <h2>Children's Privacy</h2>
+  <p>ClearGov is not directed at children under 13 and does not knowingly collect any information from children. The extension is designed to assist adults filling out government forms.</p>
+
+  <h2>Changes to This Policy</h2>
+  <p>If this privacy policy changes in a material way, the "Last updated" date above will be revised. Continued use of the extension after changes constitutes acceptance of the updated policy.</p>
+
+  <h2>Contact</h2>
+  <p>If you have questions about this privacy policy, please contact us through the Chrome Web Store listing page.</p>
+
+  <hr/>
+  <p style="font-size:13px; color:#94a3b8;">ClearGov is an independent extension and is not affiliated with any government agency.</p>
+
+</body>
+</html>
