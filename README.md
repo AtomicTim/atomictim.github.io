@@ -28,7 +28,7 @@
 
 ## 💰 Pricing
 
-- **Free** — 35 explanations per month
+- **Free** — 20 explanations per month
 - **ClearGov Pro** — $7/month for unlimited explanations
 
 ---
