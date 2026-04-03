@@ -6,175 +6,290 @@
   <title>Upgrade to ClearGov Pro</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: #f8fafc;
       color: #1e293b;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 32px 16px;
     }
 
-    .card {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-      max-width: 420px;
-      width: 100%;
-      overflow: hidden;
-    }
-
-    .card-header {
+    .header {
       background: linear-gradient(135deg, #1d4ed8, #2563eb);
       color: white;
-      padding: 28px 32px;
+      padding: 48px 24px 40px;
       text-align: center;
     }
+    .header .icon { font-size: 48px; margin-bottom: 12px; }
+    .header h1   { font-size: 30px; font-weight: 700; margin-bottom: 8px; }
+    .header p    { font-size: 16px; opacity: 0.85; max-width: 480px; margin: 0 auto; line-height: 1.5; }
 
-    .card-header .icon { font-size: 36px; margin-bottom: 10px; }
-    .card-header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
-    .card-header p { font-size: 13px; opacity: 0.85; }
+    .content {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
 
-    .card-body { padding: 28px 32px; }
+    /* ── LIMIT BANNER ── */
+    .limit-banner {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-radius: 12px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+    .limit-banner .icon { font-size: 28px; flex-shrink: 0; }
+    .limit-banner h3 { font-size: 15px; font-weight: 700; color: #dc2626; margin-bottom: 3px; }
+    .limit-banner p  { font-size: 13px; color: #7f1d1d; line-height: 1.5; }
 
-    .price {
+    /* ── PLANS ── */
+    .plans {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    @media (max-width: 520px) { .plans { grid-template-columns: 1fr; } }
+
+    .plan {
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 24px 20px;
       text-align: center;
-      margin-bottom: 24px;
     }
-    .price .amount {
-      font-size: 48px;
-      font-weight: 800;
-      color: #1d4ed8;
-      line-height: 1;
+    .plan.pro {
+      border-color: #2563eb;
+      position: relative;
+      box-shadow: 0 4px 24px rgba(37,99,235,0.12);
     }
-    .price .period {
-      font-size: 14px;
-      color: #6b7280;
-      margin-top: 4px;
-    }
-
-    .features {
-      list-style: none;
-      margin-bottom: 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .features li {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 14px;
-      color: #374151;
-      line-height: 1.5;
-    }
-    .features li .check {
-      color: #10b981;
-      font-size: 16px;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    .cta-btn {
-      display: block;
-      width: 100%;
-      padding: 14px;
+    .plan-badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
       background: #2563eb;
       color: white;
-      text-decoration: none;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: 700;
-      text-align: center;
-      transition: background 0.15s, transform 0.1s;
-    }
-    .cta-btn:hover { background: #1d4ed8; transform: translateY(-1px); }
-    .cta-btn:active { transform: translateY(0); }
-
-    .divider {
-      border: none;
-      border-top: 1px solid #e2e8f0;
-      margin: 20px 0;
-    }
-
-    .free-tier {
-      text-align: center;
-      font-size: 12px;
-      color: #6b7280;
-      line-height: 1.6;
-    }
-
-    .free-tier strong { color: #374151; }
-
-    .footer-note {
-      margin-top: 20px;
-      text-align: center;
       font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 4px 14px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .plan-name  { font-size: 13px; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+    .plan-price { font-size: 36px; font-weight: 800; color: #1e293b; line-height: 1; margin-bottom: 4px; }
+    .plan-price span { font-size: 14px; font-weight: 500; color: #6b7280; }
+    .plan-limit { font-size: 13px; color: #6b7280; margin-bottom: 20px; }
+    .plan-features { list-style: none; text-align: left; margin-bottom: 20px; }
+    .plan-features li {
+      font-size: 13px;
+      color: #374151;
+      padding: 5px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .plan-features li::before { content: "✓"; color: #10b981; font-weight: 700; flex-shrink: 0; }
+    .plan-features li.muted::before { content: "✗"; color: #d1d5db; }
+    .plan-features li.muted { color: #9ca3af; }
+
+    .btn-upgrade {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 9px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      transition: background 0.15s;
+    }
+    .btn-upgrade:hover { background: #1d4ed8; }
+
+    .btn-current {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      background: #f1f5f9;
       color: #94a3b8;
+      border: none;
+      border-radius: 9px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: default;
+      text-align: center;
     }
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
+    /* ── FEATURES LIST ── */
+    .features-section { margin-bottom: 36px; }
+    .features-section h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 520px) { .feature-grid { grid-template-columns: 1fr; } }
+
+    .feature-card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .feature-card .icon { font-size: 22px; flex-shrink: 0; }
+    .feature-card h3 { font-size: 13px; font-weight: 700; color: #1e293b; margin-bottom: 3px; }
+    .feature-card p  { font-size: 12px; color: #6b7280; line-height: 1.4; }
+
+    /* ── GUARANTEE ── */
+    .guarantee {
       background: #f0fdf4;
       border: 1px solid #bbf7d0;
-      color: #15803d;
-      font-size: 11px;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 20px;
-      margin-bottom: 16px;
+      border-radius: 10px;
+      padding: 16px 20px;
+      text-align: center;
+      font-size: 13px;
+      color: #166534;
+      margin-bottom: 24px;
     }
+
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #94a3b8;
+      padding-bottom: 40px;
+      line-height: 1.6;
+    }
+    .footer a { color: #6b7280; text-decoration: underline; }
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <div class="card-header">
-      <div class="icon">🏛️</div>
-      <h1>Upgrade to ClearGov Pro</h1>
-      <p>You've used all your free explanations this month</p>
-    </div>
+<div class="header">
+  <div class="icon">🏛️</div>
+  <h1>Upgrade to ClearGov Pro</h1>
+  <p>You've used your free explanations for this month. Upgrade for unlimited access to every feature.</p>
+</div>
 
-    <div class="card-body">
+<div class="content">
 
-      <div style="text-align:center;">
-        <div class="badge">✦ Most Popular</div>
-      </div>
-
-      <div class="price">
-        <div class="amount">$7</div>
-        <div class="period">per month · cancel anytime</div>
-      </div>
-
-      <ul class="features">
-        <li><span class="check">✓</span> <span><strong>Unlimited explanations</strong> — no monthly cap</span></li>
-        <li><span class="check">✓</span> <span><strong>All form types</strong> — FAFSA, SSA, IRS, VA, healthcare.gov and more</span></li>
-        <li><span class="check">✓</span> <span><strong>Agreement summaries</strong> — understand what you're signing before you click Accept</span></li>
-        <li><span class="check">✓</span> <span><strong>Clickable term definitions</strong> — tap any jargon for an instant plain-English explanation</span></li>
-        <li><span class="check">✓</span> <span><strong>Smart examples</strong> — real calculations for financial and tax fields</span></li>
-      </ul>
-
-      <a href="https://buy.stripe.com/cNi9ATexk6oceDE1sh3VC00" class="cta-btn">
-        Upgrade Now →
-      </a>
-
-      <hr class="divider" />
-
-      <div class="free-tier">
-        <strong>Already upgraded?</strong> Close this tab and return to the extension —
-        your account will be updated automatically within a few minutes.
-      </div>
-
+  <div class="limit-banner">
+    <div class="icon">⚠️</div>
+    <div>
+      <h3>You've reached your free limit</h3>
+      <p>Your free plan includes 20 explanations per month. Upgrade to Pro for unlimited access — no limits, ever.</p>
     </div>
   </div>
 
-  <p class="footer-note">🔒 Payments secured by Stripe · Cancel anytime from your Stripe dashboard</p>
+  <div class="plans">
+    <div class="plan">
+      <div class="plan-name">Free</div>
+      <div class="plan-price">$0 <span>/ month</span></div>
+      <div class="plan-limit">20 explanations / month</div>
+      <ul class="plan-features">
+        <li>Plain English explanations</li>
+        <li>Common mistake warnings</li>
+        <li>Clickable term definitions</li>
+        <li>Agreement summaries</li>
+        <li>Explore all options</li>
+        <li class="muted">Unlimited explanations</li>
+      </ul>
+      <div class="btn-current">Current Plan</div>
+    </div>
 
+    <div class="plan pro">
+      <div class="plan-badge">MOST POPULAR</div>
+      <div class="plan-name">Pro</div>
+      <div class="plan-price">$7 <span>/ month</span></div>
+      <div class="plan-limit">Unlimited explanations</div>
+      <ul class="plan-features">
+        <li>Plain English explanations</li>
+        <li>Common mistake warnings</li>
+        <li>Clickable term definitions</li>
+        <li>Agreement summaries</li>
+        <li>Explore all options</li>
+        <li>Unlimited explanations</li>
+      </ul>
+      <a class="btn-upgrade" href="YOUR_STRIPE_PAYMENT_LINK" target="_blank">
+        Upgrade to Pro →
+      </a>
+    </div>
+  </div>
+
+  <div class="features-section">
+    <h2>Everything included in Pro</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="icon">📝</div>
+        <div>
+          <h3>Unlimited Explanations</h3>
+          <p>Click as many fields as you need with no monthly cap.</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📜</div>
+        <div>
+          <h3>Agreement Summaries</h3>
+          <p>Plain-English bullet points of legal text before you agree.</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🔎</div>
+        <div>
+          <h3>Explore All Options</h3>
+          <p>See every dropdown choice explained before you pick one.</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="icon">💡</div>
+        <div>
+          <h3>Smart Examples</h3>
+          <p>Real calculations for financial fields like net worth and AGI.</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🔍</div>
+        <div>
+          <h3>Clickable Term Definitions</h3>
+          <p>Tap any highlighted term for an instant plain-English definition.</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="icon">⚠️</div>
+        <div>
+          <h3>Common Mistake Warnings</h3>
+          <p>The most frequent error for each field and how to avoid it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="guarantee">
+    🔒 &nbsp;Payments are processed securely by Stripe. Cancel anytime — no contracts, no commitments.
+  </div>
+
+  <div class="footer">
+    <p>After upgrading, close and reopen the ClearGov panel to activate Pro access.</p>
+    <br/>
+    <a href="privacy-policy.html">Privacy Policy</a> &nbsp;·&nbsp;
+    Questions? Contact us through the Chrome Web Store listing.
+  </div>
+
+</div>
 </body>
 </html>
